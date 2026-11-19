@@ -4,3 +4,7 @@
 
 expo-env.d.ts
 # @end expo-cli
+# Ajustes Supabase locales (la plantilla sí se comparte)
+.env
+.env.*
+!.env.example

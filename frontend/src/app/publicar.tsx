@@ -1,18 +1,8 @@
+import { Text, TextInput } from '@/components/ui/inter-text';
 import { useEffect, useRef, useState } from 'react';
 import { router } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
-import {
-  Image,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  type TextInputProps,
-} from 'react-native';
+import { Image, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, View, type TextInputProps } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CATEGORIAS, LUGARES, fechaHoyLocal, validarPublicacion, type EntradaPublicacion } from '@/features/objetos/modelo';

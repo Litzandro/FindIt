@@ -7,6 +7,7 @@ import { useAuth } from '@/features/auth/auth-context';
 import { SkeletonObjeto } from '@/components/ui/skeleton';
 import { useFiltrosPublicaciones, CATEGORIAS, LUGARES } from '@/features/inicio/use-filtros-publicaciones';
 import { tema, tipografia } from './tema-findit';
+import MarcaFindIt from '@/components/marca-findit';
 
 function Opcion({ texto, activa, elegir }: { texto: string; activa: boolean; elegir: () => void }) {
   return <Pressable accessibilityRole="button" accessibilityState={{ selected: activa }} onPress={elegir} style={[styles.opcion, activa && styles.opcionActiva]}>
@@ -50,7 +51,7 @@ export default function CatalogoWeb() {
     <View style={styles.cabecera}>
       <View style={styles.cabeceraContenido}>
         <Pressable accessibilityRole="button" onPress={() => router.replace('/')}>
-          <Text style={styles.marca}><Text style={{ color: tema.verde }}>Find</Text><Text style={{ color: tema.terracota }}>It</Text></Text>
+          <MarcaFindIt ancho={112} />
         </Pressable>
         {!compacto && <View style={styles.buscador}>
           <TextInput accessibilityLabel="Buscar objetos" style={styles.buscadorEntrada} placeholder="Buscar mochila, llaves, audífonos..." placeholderTextColor={tema.secundario} value={busqueda} onChangeText={setBusqueda} />
@@ -110,7 +111,7 @@ export default function CatalogoWeb() {
 }
 
 const styles = StyleSheet.create({
-  pantalla: { flex: 1, backgroundColor: '#F3F2F0' },
+  pantalla: { flex: 1, backgroundColor: tema.fondo },
   cabecera: { backgroundColor: tema.panel, borderBottomWidth: 1, borderColor: tema.borde, zIndex: 5 },
   cabeceraContenido: { width: '100%', maxWidth: 1390, minHeight: 76, alignSelf: 'center', paddingHorizontal: 25, alignItems: 'center', justifyContent: 'space-between', gap: 20, flexDirection: 'row' },
   marca: { fontSize: 27, fontWeight: '800', letterSpacing: -1, fontFamily: tipografia.enfasis },

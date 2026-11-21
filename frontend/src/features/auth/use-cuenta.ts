@@ -23,6 +23,7 @@ export function useCuenta() {
   const [nombre, setNombre] = useState('');
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
+  const [confirmacion, setConfirmacion] = useState('');
   const [terminos, setTerminos] = useState(false);
   const [nombrePerfil, setNombrePerfil] = useState('');
   const [procesando, setProcesando] = useState(false);
@@ -39,6 +40,7 @@ export function useCuenta() {
     setError('');
     setExito('');
     setContrasena('');
+    setConfirmacion('');
   }
 
   async function enviar() {
@@ -49,6 +51,7 @@ export function useCuenta() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError('Introduce un correo electrónico válido.'); return; }
     if (modo === 'registrar' && (nombreLimpio.length < 2 || nombreLimpio.length > 80)) { setError('El nombre debe tener entre 2 y 80 caracteres.'); return; }
     if (modo === 'registrar' && contrasena.length < 8) { setError('La contraseña debe tener al menos 8 caracteres.'); return; }
+    if (modo === 'registrar' && contrasena !== confirmacion) { setError('Las contraseñas no coinciden.'); return; }
     if (modo === 'ingresar' && !contrasena) { setError('Introduce tu contraseña.'); return; }
     if (modo === 'registrar' && !terminos) { setError('Debes aceptar las condiciones de uso antes de registrarte.'); return; }
 
@@ -61,6 +64,7 @@ export function useCuenta() {
         });
         if (fallo) throw fallo;
         setContrasena('');
+        setConfirmacion('');
         if (data.session) router.replace('/');
         else setExito('Revisa tu correo para confirmar tu cuenta, si tu servidor lo requiere.');
       } else {
@@ -110,7 +114,7 @@ export function useCuenta() {
 
   return {
     ...auth, modo, cambiarModo, nombre, setNombre, correo, setCorreo, contrasena, setContrasena,
-    terminos, setTerminos, nombrePerfil, setNombrePerfil, procesando, error, exito,
+    confirmacion, setConfirmacion, terminos, setTerminos, nombrePerfil, setNombrePerfil, procesando, error, exito,
     enviar, guardarNombre, cerrarSesion, recuperarContrasena,
   };
 }

@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { FormularioCuenta } from './FormularioCuenta';
 import { useCuenta } from '@/features/auth/use-cuenta';
 import { tema, tipografia } from '@/features/inicio/ui/tema-findit';
+import MarcaFindIt from '@/components/marca-findit';
 
 export default function CuentaMovil() {
   const cuenta = useCuenta();
@@ -14,7 +15,7 @@ export default function CuentaMovil() {
         <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
           <View style={styles.cabecera}>
             <Pressable accessibilityRole="button" accessibilityLabel="Volver al inicio" onPress={() => router.replace('/')} style={styles.volver}><Text style={styles.volverTexto}>‹</Text></Pressable>
-            <Text style={styles.marca}><Text style={styles.verde}>Find</Text><Text style={styles.naranja}>It</Text></Text>
+            <MarcaFindIt ancho={105} />
             <View style={styles.espacio} />
           </View>
           <View style={styles.formulario}><FormularioCuenta cuenta={cuenta} /></View>
@@ -34,5 +35,5 @@ const styles = StyleSheet.create({
   marca: { fontSize: 23, fontWeight: '800', letterSpacing: -0.7, fontFamily: tipografia.enfasis },
   verde: { color: tema.verde }, naranja: { color: tema.terracota },
   espacio: { width: 44 },
-  formulario: { paddingTop: 28, width: '100%', maxWidth: 460, alignSelf: 'center' },
+  formulario: { paddingTop: 36, width: '100%', maxWidth: 460, alignSelf: 'center' },
 });

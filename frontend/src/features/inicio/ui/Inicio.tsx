@@ -9,10 +9,9 @@ import { usePublicaciones } from '@/features/objetos/publicaciones';
 import type { ObjetoPublicado } from '@/features/objetos/modelo';
 import { SkeletonObjeto } from '@/components/ui/skeleton';
 import { tema, tipografia } from './tema-findit';
+import MarcaFindIt from '@/components/marca-findit';
 
-function Marca() {
-  return <Text style={styles.marca}><Text style={{ color: tema.verde }}>Find</Text><Text style={{ color: tema.terracota }}>It</Text></Text>;
-}
+function Marca() { return <MarcaFindIt ancho={118} />; }
 
 function Tarjeta({ item }: { item: ObjetoPublicado }) {
   const encontrado = item.tipo === 'encontrado';
@@ -119,12 +118,12 @@ const styles = StyleSheet.create({
   pantalla: { flex: 1, backgroundColor: tema.fondo },
   invitado: { flexGrow: 1, paddingHorizontal: 21, paddingTop: 29, paddingBottom: 42 },
   marca: { fontSize: 29, fontWeight: '800', letterSpacing: -1.3, fontFamily: tipografia.enfasis },
-  titulo: { color: tema.texto, fontWeight: '800', fontSize: 37, lineHeight: 41, letterSpacing: -1.2, marginTop: 43, fontFamily: tipografia.enfasis },
+  titulo: { color: tema.texto, fontWeight: '800', fontSize: 39, lineHeight: 44, letterSpacing: -1.2, marginTop: 35, fontFamily: tipografia.enfasis },
   descripcion: { color: tema.secundario, fontSize: 15, lineHeight: 23, marginTop: 19 },
   botonesInvitado: { marginTop: 27, gap: 12 },
-  botonVerde: { minHeight: 50, backgroundColor: tema.verde, alignItems: 'center', justifyContent: 'center', borderRadius: 12 },
+  botonVerde: { minHeight: 52, backgroundColor: tema.verde, alignItems: 'center', justifyContent: 'center', borderRadius: 12 },
   botonVerdeTexto: { color: tema.panel, fontWeight: '800', fontSize: 14 },
-  botonClaro: { minHeight: 50, borderColor: tema.borde, borderWidth: 1, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
+  botonClaro: { minHeight: 52, borderColor: tema.borde, borderWidth: 1, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
   botonClaroTexto: { color: tema.texto, fontWeight: '700', fontSize: 14 },
   listaEjemplos: { marginTop: 28, gap: 12 },
   cabecera: { minHeight: 77, paddingHorizontal: 21, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },

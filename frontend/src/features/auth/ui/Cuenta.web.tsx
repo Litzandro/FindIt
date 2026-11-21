@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { FormularioCuenta } from './FormularioCuenta';
 import { useCuenta } from '@/features/auth/use-cuenta';
 import { tema, tipografia } from '@/features/inicio/ui/tema-findit';
+import MarcaFindIt from '@/components/marca-findit';
 
 export default function CuentaWeb() {
   const cuenta = useCuenta();
@@ -17,7 +18,7 @@ export default function CuentaWeb() {
           {dosColumnas && (
             <View style={styles.panelIzquierdo}>
               <Pressable accessibilityRole="button" onPress={() => router.replace('/')} style={styles.volverMarca}>
-                <Text style={styles.marcaBlanca}>Find<Text style={styles.marcaNaranja}>It</Text></Text>
+                <MarcaFindIt sobreTeal ancho={136} />
               </Pressable>
               <View style={styles.panelLema}>
                 <Text style={styles.lema}>{cuenta.usuario ? 'Cada objeto tiene una historia.' : cuenta.modo === 'registrar' ? 'Únete y ayuda a que cada objeto vuelva a casa.' : 'Entra y encuentra lo que se perdió.'}</Text>
@@ -25,7 +26,7 @@ export default function CuentaWeb() {
             </View>
           )}
           <ScrollView style={styles.panelDerecho} keyboardShouldPersistTaps="handled" contentContainerStyle={styles.scroll}>
-            {!dosColumnas && <Pressable accessibilityRole="button" onPress={() => router.replace('/')}><Text style={styles.marca}><Text style={{ color: tema.verde }}>Find</Text><Text style={{ color: tema.terracota }}>It</Text></Text></Pressable>}
+            {!dosColumnas && <Pressable accessibilityRole="button" onPress={() => router.replace('/')}><MarcaFindIt ancho={120} /></Pressable>}
             <View style={styles.formulario}><FormularioCuenta cuenta={cuenta} /></View>
           </ScrollView>
         </View>

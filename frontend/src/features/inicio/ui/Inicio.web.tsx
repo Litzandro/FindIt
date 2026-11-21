@@ -9,10 +9,9 @@ import type { ObjetoPublicado } from '@/features/objetos/modelo';
 import { SkeletonObjeto } from '@/components/ui/skeleton';
 import { tema, tipografia } from './tema-findit';
 import CatalogoWeb from './Catalogo.web';
+import MarcaFindIt from '@/components/marca-findit';
 
-function Marca() {
-  return <Text style={styles.marca}><Text style={{ color: tema.verde }}>Find</Text><Text style={{ color: tema.terracota }}>It</Text></Text>;
-}
+function Marca() { return <MarcaFindIt ancho={127} />; }
 
 function Ejemplo({ objeto, onPress }: { objeto: ObjetoPublicado; onPress: () => void }) {
   const encontrado = objeto.tipo === 'encontrado';

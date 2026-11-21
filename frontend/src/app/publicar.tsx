@@ -7,6 +7,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CATEGORIAS, LUGARES, fechaHoyLocal, validarPublicacion, type EntradaPublicacion } from '@/features/objetos/modelo';
 import { usePublicaciones } from '@/features/objetos/publicaciones';
+import MarcaFindIt from '@/components/marca-findit';
+import { tema } from '@/features/inicio/ui/tema-findit';
 
 type ErroresFormulario = Partial<Record<keyof EntradaPublicacion, string>>;
 
@@ -126,9 +128,9 @@ export default function PublicarScreen() {
     <SafeAreaView style={styles.pantalla}>
       <View style={styles.cabecera}>
         <View style={styles.cabeceraInterior}>
-          <Text style={styles.marca}>FindIt</Text>
+          <MarcaFindIt ancho={112} />
           <Pressable accessibilityRole="button" onPress={() => router.dismissTo('/')} style={styles.volver}>
-            <Text style={styles.enlace}>← Volver al Inicio</Text>
+            <Text style={styles.enlace}>‹  Volver al inicio</Text>
           </Pressable>
         </View>
       </View>
@@ -246,18 +248,18 @@ export default function PublicarScreen() {
 }
 
 const styles = StyleSheet.create({
-  pantalla: { flex: 1, backgroundColor: '#F4F7F6' },
+  pantalla: { flex: 1, backgroundColor: tema.fondo },
   flex: { flex: 1 },
   cabecera: { backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: '#DBE5E1' },
   cabeceraInterior: { width: '100%', maxWidth: 820, alignSelf: 'center', paddingHorizontal: 20, minHeight: 82, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 10 },
-  marca: { color: '#0D7F6B', fontSize: 30, fontWeight: '800', letterSpacing: -1 },
+  marca: { color: tema.verde, fontSize: 30, fontWeight: '800', letterSpacing: -1 },
   volver: { minHeight: 44, justifyContent: 'center', paddingVertical: 10 },
-  enlace: { color: '#0D7F6B', fontSize: 14, fontWeight: '700' },
+  enlace: { color: tema.verde, fontSize: 14, fontWeight: '700' },
   scroll: { paddingHorizontal: 20, paddingTop: 30, paddingBottom: 40 },
   contenido: { width: '100%', maxWidth: 780, alignSelf: 'center', gap: 16 },
   titulo: { color: '#172825', fontSize: 32, fontWeight: '700', letterSpacing: -0.7 },
   subtitulo: { color: '#596C67', fontSize: 16, lineHeight: 24 },
-  aviso: { backgroundColor: '#E3F2ED', borderRadius: 14, padding: 16, gap: 6 },
+  aviso: { backgroundColor: tema.verdeClaro, borderRadius: 14, padding: 16, gap: 6 },
   avisoTitulo: { color: '#075C4C', fontSize: 14, fontWeight: '700' },
   avisoTexto: { color: '#315F52', fontSize: 14, lineHeight: 21 },
   formulario: { backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#DBE5E1', borderRadius: 20, padding: 20, gap: 20 },
@@ -270,21 +272,21 @@ const styles = StyleSheet.create({
   entradaError: { borderColor: '#B42318' },
   opciones: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   opcion: { minHeight: 44, borderWidth: 1, borderColor: '#DBE5E1', borderRadius: 24, paddingHorizontal: 14, paddingVertical: 12, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' },
-  opcionSeleccionada: { backgroundColor: '#0D7F6B', borderColor: '#0D7F6B' },
+  opcionSeleccionada: { backgroundColor: tema.verde, borderColor: '#0D7F6B' },
   opcionTexto: { color: '#172825', fontSize: 14, fontWeight: '600' },
   opcionTextoSeleccionado: { color: '#FFFFFF' },
   presionado: { opacity: 0.7 },
   anadirFoto: { minHeight: 158, borderWidth: 2, borderColor: '#A5BEB4', borderStyle: 'dashed', borderRadius: 16, justifyContent: 'center', alignItems: 'center', padding: 16, gap: 8 },
-  signoFoto: { color: '#0D7F6B', fontSize: 32 },
-  anadirFotoTexto: { color: '#0D7F6B', fontSize: 18, fontWeight: '700' },
+  signoFoto: { color: tema.verde, fontSize: 32 },
+  anadirFotoTexto: { color: tema.verde, fontSize: 18, fontWeight: '700' },
   ayuda: { color: '#596C67', fontSize: 13, lineHeight: 20 },
-  fotoContenedor: { borderRadius: 14, overflow: 'hidden', backgroundColor: '#E3F2ED' },
+  fotoContenedor: { borderRadius: 14, overflow: 'hidden', backgroundColor: tema.verdeClaro },
   foto: { width: '100%', aspectRatio: 1.5 },
   accionesFoto: { flexDirection: 'row', justifyContent: 'space-between', gap: 12 },
   botonTexto: { minHeight: 44, paddingVertical: 12, justifyContent: 'center' },
   quitarTexto: { color: '#B42318', fontSize: 14, fontWeight: '600' },
   error: { color: '#B42318', fontSize: 13, lineHeight: 20 },
   resumenError: { color: '#B42318', backgroundColor: '#FFF0EC', borderRadius: 12, padding: 14, fontSize: 14, lineHeight: 22 },
-  publicarBoton: { minHeight: 54, backgroundColor: '#0D7F6B', borderRadius: 15, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 16, marginTop: 4 },
+  publicarBoton: { minHeight: 54, backgroundColor: tema.verde, borderRadius: 15, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 16, marginTop: 4 },
   publicarTexto: { color: '#FFFFFF', fontSize: 17, fontWeight: '700' },
 });

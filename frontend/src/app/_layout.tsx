@@ -12,6 +12,7 @@ import { Platform, StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PublicacionesProvider } from '@/features/objetos/publicaciones';
 import { AuthProvider } from '@/features/auth/auth-context';
+import { tema } from '@/features/inicio/ui/tema-findit';
 
 // Mantener la pantalla de inicio nativa visible hasta disponer de Inter.
 // En web se conserva el HTML renderizado por Expo Router.
@@ -44,7 +45,7 @@ export default function RootLayout() {
       <AuthProvider>
         <PublicacionesProvider>
           <StatusBar barStyle="dark-content" />
-          <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: '#F4F7F6' } }} />
+          <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: tema.fondo } }} />
         </PublicacionesProvider>
       </AuthProvider>
     </SafeAreaProvider>
